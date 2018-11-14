@@ -3,27 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public float speed;
     Vector3 move;
     // Use this for initialization
-    void Start () {
-        Input.gyro.enabled = true;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    void Start()
     {
-	    
-	}
+        Input.gyro.enabled = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Input.gyro.enabled = true;
+    }
 
     void FixedUpdate()
     {
-        if (Application.platform == RuntimePlatform.Android)
-            move = new Vector2(Input.gyro.rotationRateUnbiased.x, Input.gyro.rotationRateUnbiased.y);
-        else
-           move = new MovementController().MoveByAxis();
+        //if (Application.platform == RuntimePlatform.Android)
+        move = new Vector2(Input.gyro.rotationRateUnbiased.x, Input.gyro.rotationRateUnbiased.y);
+        //else
+        //   move = new MovementController().MoveByAxis();
         Rigidbody bod = GetComponent<Rigidbody>();
         //if(Vector3.zero == cameraRotation)
         //{
@@ -42,10 +44,9 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 desiredMoveDirection = forward * move.z + right * move.x;
 
-        bod.AddForce(desiredMoveDirection* speed * Time.deltaTime * 20);
-            
-        //}
-        
+        bod.AddForce(desiredMoveDirection * speed * Time.deltaTime * 20);
 
     }
+
+
 }
