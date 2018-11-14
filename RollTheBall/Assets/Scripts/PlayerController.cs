@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //if (Application.platform == RuntimePlatform.Android)
-        move = new Vector2(Input.gyro.rotationRateUnbiased.x, Input.gyro.rotationRateUnbiased.y);
+        move = new Vector2(Input.gyro.userAcceleration.x, Input.gyro.userAcceleration.y);
         //else
         //   move = new MovementController().MoveByAxis();
         Rigidbody bod = GetComponent<Rigidbody>();
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        Vector3 desiredMoveDirection = forward * move.z + right * move.x;
+        Vector3 desiredMoveDirection = forward * move.y + right * 0;
 
         bod.AddForce(desiredMoveDirection * speed * Time.deltaTime * 20);
 
