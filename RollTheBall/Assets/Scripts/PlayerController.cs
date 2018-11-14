@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     Vector3 move;
+    public Joystick joy;
     // Use this for initialization
     void Start()
     {
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour
         //else
         //   move = new MovementController().MoveByAxis();
         Rigidbody bod = GetComponent<Rigidbody>();
-        var joy = FindObjectOfType<Joystick>();
         move = new Vector3(joy.Horizontal * 7, bod.velocity.y, joy.Vertical * 7);
 
         var camera = GameObject.FindGameObjectWithTag("Camera");

@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
 
     private Vector3 offsetX;
 
+    public Joystick joystick;
+
     void Start()
     {
 
@@ -23,8 +25,8 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        //    offsetX = Quaternion.AngleAxis(Input.GetTouch(0).deltaPosition.x * turnSpeed, Vector3.up) * offsetX;
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+            offsetX = Quaternion.AngleAxis(-joystick.Horizontal * turnSpeed, Vector3.up) * offsetX;
         //offsetX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offsetX;
         transform.position = player.position + offsetX;
         transform.LookAt(player.position);
