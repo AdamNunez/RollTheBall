@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public GameObject player;
-    public Vector3 offset;
     private Vector3 rotationOffset;
 
-	// Use this for initialization
-	void Start () {
-        //offset =  transform.position - player.transform.position;
-	}
-	
-	// Update is called once per frame
-    void LateUpdate()
-    {
-        transform.position = player.transform.position + offset;
+        public float turnSpeed = 4.0f;
+        public Transform player;
+
+        public float height = 1f;
+        public float distance = 2f;
+
+        private Vector3 offsetX;
+
+        void Start()
+        {
+
+            offsetX = new Vector3(0, height, distance);
+        }
+
+        void LateUpdate()
+        {
+            offsetX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offsetX;
+            transform.position = player.position + offsetX;
+            transform.LookAt(player.position);
+        }
     }
-}
