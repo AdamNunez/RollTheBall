@@ -19,7 +19,9 @@ public class BadCollision : MonoBehaviour {
         PlayerController p = other.GetComponent<PlayerController>();
         Rigidbody b = p.GetComponent<Rigidbody>();
         b.velocity = Vector3.zero;
+
         b.angularVelocity = Vector3.zero;
+        
         b.Sleep();
     }
 }
