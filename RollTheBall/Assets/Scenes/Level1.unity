@@ -1556,6 +1556,13 @@ MonoBehaviour:
   player: {fileID: 403002481}
   height: 2
   distance: 4
+  joystick: {fileID: 1738259348}
+--- !u!114 &1738259348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114859346367353968, guid: ce5089f3caa5bb042a4d4c23a427bc82,
+    type: 2}
+  m_PrefabInternal: {fileID: 959061363}
+  m_Script: {fileID: 11500000, guid: cecce8d3f549de045bea5fd79de9e7cb, type: 3}
 --- !u!1 &1905178339
 GameObject:
   m_ObjectHideFlags: 0
