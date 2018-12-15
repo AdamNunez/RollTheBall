@@ -20,7 +20,7 @@ public class CameraRotator : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         var c = GameObject.FindGameObjectWithTag("Camera");
-        if(c != null && c.transform != null && !cameraRotated)
+        if (c != null && c.transform != null && !cameraRotated)
         {
             Vector3 pos = c.transform.eulerAngles;
             pos.x += XRotation;
@@ -31,12 +31,20 @@ public class CameraRotator : MonoBehaviour {
             cameraRotated = true;
         }
 
-        //var p = GameObject.FindGameObjectWithTag("Player");
-        //if (p != null && p.transform != null && !playerRotated)
-        //{
-        //    p.GetComponent<PlayerController>().cameraRotation = new Vector3(XRotation, YRotation, ZRotation);
-        //    playerRotated = true;
-        //}
+        var p = GameObject.FindGameObjectWithTag("Player");
+        if (p != null && p.transform != null && !playerRotated)
+        {
+            Vector3 pos = p.transform.eulerAngles;
+            pos.x += XRotation;
+            pos.y += YRotation;
+            pos.z += ZRotation;
+            p.transform.eulerAngles = pos;
+
+            //c.GetComponent<CameraController>().offset = new Vector3(2, -2.1f, 0);
+            c.GetComponent<CameraController>().offsetX = new Vector3(-1.9f, 2, -0.06f); ;
+
+            playerRotated = true;
+        }
 
     }
 }

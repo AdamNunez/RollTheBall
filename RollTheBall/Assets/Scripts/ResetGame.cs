@@ -23,9 +23,13 @@ public class ResetGame : MonoBehaviour {
         p.GetComponent<Rigidbody>().angularDrag = 0f;
 
         GameObject rotatorSquare = GameObject.FindGameObjectWithTag("CameraRotatorArea");
-        rotatorSquare.GetComponent<CameraRotator>().cameraRotated = false;
+        CameraRotator r = rotatorSquare.GetComponent<CameraRotator>();
+        r.cameraRotated = false;
+        r.playerRotated = false;
 
         GameObject c = GameObject.FindGameObjectWithTag("Camera");
         c.transform.eulerAngles = new Vector3(45, 0, 0);
+        CameraController controller = c.GetComponent<CameraController>();
+        controller.offsetX = new Vector3(0, 2, -2.1f);
     }
 }
